@@ -5,52 +5,53 @@ class TerminalPuzzle {
     this.erro = false;
     this.tempoErro = 0;
 
+    // Etapas da reprogramação lógica em ordem misturada
     this.botoes = [
-      { id: 0, texto: "1. LIGAR FILTRO", x: 260, y: 190, w: 280, h: 45 },
-      { id: 2, texto: "3. PURIFICAR ÁGUA", x: 260, y: 250, w: 280, h: 45 },
-      { id: 1, texto: "2. COLETAR DADOS", x: 260, y: 310, w: 280, h: 45 }
+      { id: 0, texto: "1. ATIVAR SENSORES", x: 260, y: 180, w: 280, h: 42 },
+      { id: 2, texto: "3. PURIFICAR ECOSSISTEMA", x: 260, y: 235, w: 280, h: 42 },
+      { id: 1, texto: "2. FILTRAR IMPUREZAS", x: 260, y: 290, w: 280, h: 42 }
     ];
   }
 
   desenhar() {
     push();
-    // Fundo do terminal (Painel do Robô)
-    fill(15, 23, 42, 235);
+    // Janela do terminal
+    fill(15, 23, 42, 240);
     stroke(56, 239, 125);
     strokeWeight(3);
-    rect(180, 80, 440, 340, 15);
+    rect(180, 70, 440, 350, 12);
 
     noStroke();
     fill(255);
     textAlign(CENTER, CENTER);
     textSize(20);
-    text("TERMINAL DE REPROGRAMAÇÃO", width / 2, 120);
+    text("TERMINAL DE REPROGRAMAÇÃO", width / 2, 110);
 
     textSize(13);
-    fill(180);
-    text("Ordene a sequência lógica do algoritmo de purificação:", width / 2, 150);
+    fill(148, 163, 184);
+    text("Monte o algoritmo correto de recuperação ambiental:", width / 2, 140);
 
-    // Botões
+    // Botões interativos
     for (let b of this.botoes) {
       if (b.id < this.passoEsperado) {
-        fill(46, 204, 113); // Concluído
+        fill(34, 197, 94); // Sucesso
       } else {
         fill(30, 41, 59);
       }
-      stroke(255);
+      stroke(100, 116, 139);
       strokeWeight(1);
-      rect(b.x, b.y, b.w, b.h, 8);
+      rect(b.x, b.y, b.w, b.h, 6);
 
       noStroke();
       fill(255);
-      textSize(15);
+      textSize(14);
       text(b.texto, b.x + b.w / 2, b.y + b.h / 2);
     }
 
     if (this.erro && millis() - this.tempoErro < 1500) {
-      fill(231, 76, 60);
-      textSize(14);
-      text("Sequência incorreta! Tente novamente.", width / 2, 385);
+      fill(239, 68, 68);
+      textSize(13);
+      text("Falha na lógica! O algoritmo foi resetado.", width / 2, 365);
     }
     pop();
   }
@@ -67,7 +68,7 @@ class TerminalPuzzle {
         } else if (b.id > this.passoEsperado) {
           this.erro = true;
           this.tempoErro = millis();
-          this.passoEsperado = 0; // Reinicia a tentativa
+          this.passoEsperado = 0; // Reinicia se errar a ordem
         }
       }
     }
