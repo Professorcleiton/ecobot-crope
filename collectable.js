@@ -5,7 +5,6 @@ class Lixo {
     this.tam = 20;
     this.coletado = false;
   }
-
   desenhar() {
     if (this.coletado) return;
     push();
