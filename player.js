@@ -11,8 +11,7 @@ class Robo {
     this.noChao = false;
   }
 
-  atualizar(chaoY) {
-    // Controles A/D ou Setas
+atualizar(chaoY, plataformas) {
     if (keyIsDown(LEFT_ARROW) || keyIsDown(65)) {
       this.velX = -this.velocidade;
     } else if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) {
@@ -23,17 +22,32 @@ class Robo {
 
     this.x += this.velX;
 
-    // Física e Gravidade
+    // Gravidade
     this.velY += this.gravidade;
     this.y += this.velY;
 
-    // Colisão com o solo
+    this.noChao = false;
+
+    // Colisão com o chão padrão
     if (this.y + this.tam >= chaoY) {
       this.y = chaoY - this.tam;
       this.velY = 0;
       this.noChao = true;
-    } else {
-      this.noChao = false;
+    }
+
+    // Colisão com as plataformas suspensas
+    for (let p of plataformas) {
+      if (
+        this.x + this.tam > p.x &&
+        this.x < p.x + p.w &&
+        this.y + this.tam >= p.y &&
+        this.y + this.tam <= p.y + 15 &&
+        this.velY >= 0
+      ) {
+        this.y = p.y - this.tam;
+        this.velY = 0;
+        this.noChao = true;
+      }
     }
 
     this.x = constrain(this.x, 0, width - this.tam);
