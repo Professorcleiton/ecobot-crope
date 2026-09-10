@@ -5,7 +5,7 @@ CAMPEONATO DE PROGRAMAÇÃO
 Projeto desenvolvido para o **2º Campeonato de Robótica e Programação Educacional (CROPE)**.
 
 ## Link do Jogo Online
-[Acesse aqui a versão jogável via GitHub Pages](https://SEU-USUARIO.github.io/ecobot-crope/)
+[Acesse aqui a versão jogável via GitHub Pages](https://professorcleiton.github.io/ecobot-crope/)
 
 ## Sobre o Projeto
 O jogo aborda a importância da preservação ambiental e o uso de algoritmos na resolução de problemas reais de sustentabilidade. O jogador opera um robô limpador que remove rejeitos do solo e reprograma terminais de purificação de água através de raciocínio sequencial lógico.
